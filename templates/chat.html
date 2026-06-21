@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Chat | AI Resume Analyzer</title>
+  <meta name="description" content="Chat with AI about your resume — ask about job fit, skills, certifications, and career advice." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="chat">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Dashboard</a>
+        <a href="/analyzer">Analyzer</a>
+        <a href="/jd-match">JD Match</a>
+        <a href="/report">Report</a>
+        <a class="is-active" href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">AI Career Advisor</span>
+        <h1>Chat About Your Resume</h1>
+      </div>
+    </div>
+
+    <!-- Warning if no analysis done yet -->
+    <div id="upload-warn" style="display:none; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(210,153,34,0.35); background: rgba(210,153,34,0.08); color: var(--amber); font-size: 0.88rem; margin-bottom: 16px;">
+      ⚠️ No resume analyzed yet. <a href="/analyzer" style="color: inherit; text-decoration: underline;">Analyze your resume first</a> for best results. The AI will use your stored analysis data.
+    </div>
+
+    <div class="chat-layout">
+
+      <!-- Sidebar: Suggested Questions -->
+      <aside class="chat-sidebar" aria-label="Suggested questions">
+        <h3>Suggested Questions</h3>
+
+        <button class="suggested-btn" data-q="What are my strongest technical skills based on my resume?">
+          💪 What are my strongest skills?
+        </button>
+        <button class="suggested-btn" data-q="Am I eligible for a Data Scientist role based on my resume?">
+          🎯 Am I eligible for Data Scientist?
+        </button>
+        <button class="suggested-btn" data-q="What certifications should I pursue to improve my profile?">
+          📜 What certifications should I get?
+        </button>
+        <button class="suggested-btn" data-q="What are the biggest gaps in my resume?">
+          🔍 What are my biggest resume gaps?
+        </button>
+        <button class="suggested-btn" data-q="What job roles am I most suited for right now?">
+          💼 What roles suit me best?
+        </button>
+        <button class="suggested-btn" data-q="How can I improve my resume to get more interview calls?">
+          📈 How do I get more interviews?
+        </button>
+        <button class="suggested-btn" data-q="What machine learning or AI skills should I add to my resume?">
+          🤖 What AI skills should I add?
+        </button>
+        <button class="suggested-btn" data-q="Give me a 3-month learning roadmap based on my resume gaps.">
+          🗺️ Give me a 3-month roadmap
+        </button>
+
+        <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);">
+          <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;">
+            The AI uses your latest resume analysis as context. For best results, <a href="/analyzer" style="color: #a78bfa;">run the analyzer first</a>.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Chat Main -->
+      <div class="chat-main">
+        <div id="chat-messages" class="chat-messages">
+          <div class="bubble-empty">
+            <div style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;">🤖</div>
+            <p>Ask me anything about your resume, career, or next steps.</p>
+            <p style="margin-top: 8px; font-size: 0.82rem; opacity: 0.6;">Use the suggested questions on the left or type your own.</p>
+          </div>
+        </div>
+
+        <div class="chat-input-row">
+          <input
+            id="chat-input"
+            class="chat-input"
+            type="text"
+            placeholder="Ask about your resume, skills, career path…"
+            autocomplete="off"
+            maxlength="500"
+          />
+          <button id="send-btn" class="btn btn-primary btn-icon" type="button" aria-label="Send message">
+            ➤
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

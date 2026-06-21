@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JD Match | AI Resume Analyzer</title>
+  <meta name="description" content="Compare your resume against any job description and get a match percentage, matched skills, and missing skills." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="jd-match">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Dashboard</a>
+        <a href="/analyzer">Analyzer</a>
+        <a class="is-active" href="/jd-match">JD Match</a>
+        <a href="/report">Report</a>
+        <a href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">Job Description Matching</span>
+        <h1>Match Resume to Job</h1>
+      </div>
+    </div>
+
+    <form id="jd-form" enctype="multipart/form-data">
+      <div class="jd-workspace">
+
+        <!-- Left: Inputs -->
+        <div class="jd-input-panel">
+          <div>
+            <span class="eyebrow">Step 1 — Resume</span>
+            <h2 style="margin-top: 8px;">Upload Your Resume</h2>
+          </div>
+
+          <label for="jd-resume-file" class="dropzone" id="jd-dropzone">
+            <input type="file" id="jd-resume-file" name="file" accept=".pdf,.docx,.doc" required />
+            <div class="dz-icon">📄</div>
+            <span class="dz-title">Drop resume here</span>
+            <span class="dz-meta">PDF or DOCX · Max 10 MB</span>
+          </label>
+
+          <div>
+            <span class="eyebrow">Step 2 — Job Description</span>
+            <h2 style="margin: 8px 0 12px;">Paste Job Description</h2>
+            <label class="field-label" for="jd-text">Job Description Text</label>
+            <textarea
+              id="jd-text"
+              name="job_description"
+              class="jd-textarea"
+              placeholder="Paste the full job description here — requirements, responsibilities, skills, qualifications…"
+              required
+            ></textarea>
+          </div>
+
+          <button id="jd-submit-btn" class="btn btn-primary btn-full" type="submit">
+            Analyze Match
+          </button>
+        </div>
+
+        <!-- Right: Results -->
+        <div class="jd-result-panel">
+          <div>
+            <span class="eyebrow">Match Results</span>
+            <h2 style="margin-top: 8px;">Resume vs Job Description</h2>
+          </div>
+
+          <!-- Placeholder -->
+          <div id="jd-placeholder" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:var(--text-muted); gap:12px; padding: 40px;">
+            <div style="font-size: 3rem; opacity: 0.35;">🎯</div>
+            <p style="font-size: 0.9rem;">Upload your resume and paste a job description to see your match score.</p>
+          </div>
+
+          <!-- Results (hidden until analysis) -->
+          <div id="jd-result-section" hidden>
+
+            <!-- Match Ring -->
+            <div class="match-ring-wrap">
+              <div id="match-ring" class="match-ring">
+                <div class="match-ring-inner">
+                  <div id="match-pct" class="match-pct">0</div>
+                  <div class="match-pct-label">% Match</div>
+                </div>
+              </div>
+              <div class="match-meta">
+                <p><strong id="match-verdict">—</strong></p>
+                <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 4px;">Overall compatibility score based on skills, keywords, and experience fit.</p>
+              </div>
+            </div>
+
+            <!-- Skills Comparison -->
+            <div class="results-grid" style="margin-top: 20px;">
+              <article class="result-card green">
+                <h3>Matched Skills</h3>
+                <ul id="matched-skills-list" class="tag-list"></ul>
+              </article>
+              <article class="result-card amber">
+                <h3>Missing Skills</h3>
+                <ul id="missing-skills-jd" class="tag-list"></ul>
+              </article>
+              <article class="result-card wide indigo">
+                <h3>Keyword Overlap</h3>
+                <ul id="keyword-overlap-list" class="tag-list"></ul>
+              </article>
+            </div>
+
+            <!-- Written assessments -->
+            <div class="results-grid" style="margin-top: 16px;">
+              <article class="result-card">
+                <h3>Experience Fit</h3>
+                <p id="experience-fit" style="font-size:0.9rem; color:var(--text-soft); line-height:1.6;"></p>
+              </article>
+              <article class="result-card">
+                <h3>Overall Assessment</h3>
+                <p id="overall-assessment" style="font-size:0.9rem; color:var(--text-soft); line-height:1.6;"></p>
+              </article>
+            </div>
+
+            <!-- Action row -->
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
+              <a class="btn btn-secondary btn-sm" href="/cover-letter">Generate Cover Letter →</a>
+              <a class="btn btn-ghost btn-sm" href="/analyzer">Full Resume Analysis</a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

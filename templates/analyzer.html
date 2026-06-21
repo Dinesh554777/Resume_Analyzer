@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyzer | AI Resume Analyzer</title>
+  <meta name="description" content="Upload your resume and get a full AI-powered analysis including ATS score, skill gaps, and career recommendations." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="analyzer">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Dashboard</a>
+        <a class="is-active" href="/analyzer">Analyzer</a>
+        <a href="/jd-match">JD Match</a>
+        <a href="/report">Report</a>
+        <a href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">Full AI Analysis</span>
+        <h1>Analyze Your Resume</h1>
+      </div>
+      <div id="status-pill" class="status-pill">
+        <span class="status-dot"></span>
+        <span>Ready</span>
+      </div>
+    </div>
+
+    <!-- ── Workspace ── -->
+    <section class="workspace" aria-label="Resume analysis workspace">
+
+      <!-- Upload Panel -->
+      <section class="upload-panel" aria-labelledby="upload-heading">
+        <div class="panel-title">
+          <div>
+            <span class="eyebrow">Step 1</span>
+            <h2 id="upload-heading">Upload Resume</h2>
+          </div>
+          <div class="file-badge">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-docx">DOCX</span>
+          </div>
+        </div>
+
+        <form id="upload-form" enctype="multipart/form-data">
+          <label for="resume-file" class="dropzone" id="dropzone">
+            <input type="file" id="resume-file" name="file" accept=".pdf,.docx,.doc" required />
+            <div class="dz-icon">📄</div>
+            <span class="dz-title" id="dz-title">Drop your resume here</span>
+            <span class="dz-meta" id="dz-meta">PDF or DOCX · Max 10 MB</span>
+          </label>
+
+          <div class="upload-actions">
+            <button id="clearBtn" class="btn btn-secondary" type="button">Clear</button>
+            <button id="analyzeBtn" class="btn btn-primary" type="submit">Analyze Resume</button>
+          </div>
+        </form>
+
+        <!-- Process Steps -->
+        <div class="steps" aria-label="Analysis steps">
+          <div class="step active" id="step-1">
+            <div class="step-num">01</div>
+            <div class="step-label">Upload</div>
+          </div>
+          <div class="step" id="step-2">
+            <div class="step-num">02</div>
+            <div class="step-label">Extract</div>
+          </div>
+          <div class="step" id="step-3">
+            <div class="step-num">03</div>
+            <div class="step-label">Score</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insight Panel -->
+      <aside class="insight-panel" aria-label="Analysis summary">
+        <div class="score-card">
+          <div>
+            <p class="score-label">ATS Score</p>
+            <div id="score-number" class="score-number">--</div>
+          </div>
+          <div id="score-ring" class="score-ring">
+            <div id="score-ring-inner" class="score-ring-inner">0%</div>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <p class="eyebrow" style="margin-bottom:8px">Current State</p>
+          <div id="status-title" class="status-title">Waiting for resume</div>
+          <p id="status-msg" class="status-msg">Upload a PDF or DOCX file to get your ATS score, skill gaps, and career recommendations.</p>
+          <div class="progress-track" aria-hidden="true">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="quick-stats" aria-label="Result totals">
+          <div class="quick-stat">
+            <span class="qs-num" id="skills-count">0</span>
+            <p class="qs-label">Skills</p>
+          </div>
+          <div class="quick-stat">
+            <span class="qs-num" id="gaps-count">0</span>
+            <p class="qs-label">Gaps</p>
+          </div>
+          <div class="quick-stat">
+            <span class="qs-num" id="actions-count">0</span>
+            <p class="qs-label">Actions</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ── Results Section ── -->
+    <section id="result-section" class="result-section" hidden aria-labelledby="results-heading">
+
+      <div class="result-header">
+        <div>
+          <span class="eyebrow">Analysis Results</span>
+          <h2 id="results-heading">Resume Report</h2>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-secondary" href="/report">Open Full Report</a>
+          <button id="resetViewBtn" class="btn btn-ghost" type="button">New Analysis</button>
+        </div>
+      </div>
+
+      <!-- Sub-Scores -->
+      <div class="sub-scores" aria-label="Sub-score breakdown">
+        <div class="sub-score-card" id="sub-keyword">
+          <div class="sub-score-ring">
+            <div class="sub-score-inner">0</div>
+          </div>
+          <div class="sub-score-label">Keyword</div>
+        </div>
+        <div class="sub-score-card" id="sub-experience">
+          <div class="sub-score-ring">
+            <div class="sub-score-inner">0</div>
+          </div>
+          <div class="sub-score-label">Experience</div>
+        </div>
+        <div class="sub-score-card" id="sub-project">
+          <div class="sub-score-ring">
+            <div class="sub-score-inner">0</div>
+          </div>
+          <div class="sub-score-label">Projects</div>
+        </div>
+        <div class="sub-score-card" id="sub-education">
+          <div class="sub-score-ring">
+            <div class="sub-score-inner">0</div>
+          </div>
+          <div class="sub-score-label">Education</div>
+        </div>
+      </div>
+
+      <div class="results-grid" style="margin-top: 20px;">
+
+        <!-- Skills -->
+        <article class="result-card green">
+          <h3>Skills Identified</h3>
+          <ul id="skills-list" class="tag-list" role="list"></ul>
+        </article>
+
+        <!-- Missing Skills -->
+        <article class="result-card amber">
+          <h3>Missing Skills</h3>
+          <ul id="missing-skills-list" class="tag-list" role="list"></ul>
+        </article>
+
+        <!-- Recommended Roles -->
+        <article class="result-card indigo wide">
+          <h3>Recommended Job Roles</h3>
+          <ul id="roles-list" class="tag-list" role="list"></ul>
+        </article>
+
+        <!-- Missing Certifications -->
+        <article class="result-card amber">
+          <h3>Missing Certifications</h3>
+          <ul id="missing-certs-list" class="tag-list" role="list"></ul>
+        </article>
+
+        <!-- Interview Topics -->
+        <article class="result-card indigo">
+          <h3>Interview Topics to Prepare</h3>
+          <ul id="interview-topics-list" class="tag-list" role="list"></ul>
+        </article>
+
+        <!-- Strengths -->
+        <article class="result-card green">
+          <h3>Strengths</h3>
+          <div id="strengths-list" role="list"></div>
+        </article>
+
+        <!-- Weaknesses -->
+        <article class="result-card amber">
+          <h3>Weaknesses</h3>
+          <div id="weaknesses-list" role="list"></div>
+        </article>
+
+        <!-- Improvements -->
+        <article class="result-card wide">
+          <h3>Improvement Areas</h3>
+          <div id="improvements-list" role="list"></div>
+        </article>
+
+        <!-- Project Suggestions -->
+        <article class="result-card wide">
+          <h3>Project Suggestions</h3>
+          <div id="project-suggestions-list" role="list"></div>
+        </article>
+
+        <!-- Resume Improvements -->
+        <article class="result-card wide">
+          <h3>Resume Improvement Suggestions</h3>
+          <div id="improvement-suggestions-list" role="list"></div>
+        </article>
+
+        <!-- Career Recommendations -->
+        <article class="result-card wide">
+          <h3>Career Recommendations</h3>
+          <div id="career-recommendations-list" role="list"></div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

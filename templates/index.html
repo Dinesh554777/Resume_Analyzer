@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Resume Analyzer — ATS Scoring, Skill Gap Analysis & Career Intelligence</title>
+  <meta name="description" content="Upload your resume and get instant ATS scores, skill gap analysis, career recommendations, and AI-powered improvement suggestions." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="home">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="is-active" href="/">Dashboard</a>
+        <a href="/analyzer">Analyzer</a>
+        <a href="/jd-match">JD Match</a>
+        <a href="/report">Report</a>
+        <a href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <!-- ── Hero ── -->
+    <section class="hero fade-up">
+      <div class="hero-copy">
+        <span class="eyebrow">AI-Powered Resume Intelligence</span>
+        <h1>Turn your resume into a<br><span class="gradient-text">hiring signal.</span></h1>
+        <p class="lead">Upload a PDF or DOCX. Get instant ATS scores, skill gap analysis, JD matching, career recommendations, and an AI cover letter — powered by Groq LLM.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/analyzer">Analyze My Resume</a>
+          <a class="btn btn-secondary" href="/jd-match">Match to Job Description</a>
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-hidden="true">
+        <div class="mock-topbar">
+          <span class="mock-dot"></span>
+          <span class="mock-dot"></span>
+          <span class="mock-dot"></span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-score-row">
+            <div class="mock-ring">
+              <div class="mock-ring-inner">82</div>
+            </div>
+            <div class="mock-bars">
+              <div class="mock-bar-row">
+                <div class="mock-bar-label">Keyword Score</div>
+                <div class="mock-bar-track"><div class="mock-bar-fill" style="width:88%"></div></div>
+              </div>
+              <div class="mock-bar-row">
+                <div class="mock-bar-label">Experience</div>
+                <div class="mock-bar-track"><div class="mock-bar-fill" style="width:76%"></div></div>
+              </div>
+              <div class="mock-bar-row">
+                <div class="mock-bar-label">Projects</div>
+                <div class="mock-bar-track"><div class="mock-bar-fill" style="width:82%"></div></div>
+              </div>
+              <div class="mock-bar-row">
+                <div class="mock-bar-label">Education</div>
+                <div class="mock-bar-track"><div class="mock-bar-fill" style="width:70%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-tags">
+            <span class="mock-tag active">Python</span>
+            <span class="mock-tag active">FastAPI</span>
+            <span class="mock-tag active">SQL</span>
+            <span class="mock-tag">Docker</span>
+            <span class="mock-tag">AWS</span>
+            <span class="mock-tag active">LLM</span>
+            <span class="mock-tag">Kubernetes</span>
+          </div>
+          <div class="mock-skeleton w85"></div>
+          <div class="mock-skeleton w70"></div>
+          <div class="mock-skeleton w50"></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ── Stats Row ── -->
+    <section class="stats-row fade-up fade-up-1" aria-label="Platform statistics">
+      <div class="stat-card">
+        <span class="stat-number">15+</span>
+        <p class="stat-label">Analysis Fields</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">6</span>
+        <p class="stat-label">AI Endpoints</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">100%</span>
+        <p class="stat-label">LLM Powered</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">PDF + DOCX</span>
+        <p class="stat-label">File Support</p>
+      </div>
+    </section>
+
+    <!-- ── Features ── -->
+    <section class="feature-grid fade-up fade-up-2" aria-label="Features">
+      <article class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>ATS Score + Sub-Scores</h3>
+        <p>Get an overall ATS score plus keyword, experience, project, and education sub-scores — so you know exactly where to improve.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>JD Match Analysis</h3>
+        <p>Upload your resume and paste any job description. Get a match percentage, matched skills, missing skills, and a keyword overlap analysis.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Chat with Resume</h3>
+        <p>Ask the AI anything about your resume — "Am I ready for a Data Scientist role?" or "What certifications should I get?"</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">✉️</div>
+        <h3>Cover Letter Generator</h3>
+        <p>Generate a personalized, ATS-optimized cover letter tailored to the job description, company, and your specific background.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h3>Career Recommendations</h3>
+        <p>Get 5 recommended job roles, a personalized learning roadmap, certifications to pursue, and interview topics to prepare.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Interview Question Generator</h3>
+        <p>Auto-generate technical, HR, project-specific, and behavioral interview questions based on your resume's actual content.</p>
+      </article>
+    </section>
+
+    <!-- ── Workflow ── -->
+    <section class="workflow-section fade-up fade-up-3">
+      <div class="workflow-card">
+        <span class="eyebrow">How It Works</span>
+        <h2>Four steps to a stronger resume.</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">01</div>
+            <div class="timeline-content">
+              <h4>Upload Resume</h4>
+              <p>Drop your PDF or DOCX file on the Analyzer page.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">02</div>
+            <div class="timeline-content">
+              <h4>AI Analysis</h4>
+              <p>Groq LLM extracts 15+ data points — scores, skills, gaps, strengths.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">03</div>
+            <div class="timeline-content">
+              <h4>Match to Jobs</h4>
+              <p>Paste any job description to see your fit score and missing skills.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">04</div>
+            <div class="timeline-content">
+              <h4>Apply Smarter</h4>
+              <p>Use AI chat, the cover letter generator, and report to land your role.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-card" style="background: linear-gradient(135deg, rgba(110,64,242,0.08), rgba(0,212,170,0.06));">
+        <span class="eyebrow">Get Started</span>
+        <h2>Ready to analyze your resume?</h2>
+        <p style="color: var(--text-soft); font-size: 0.95rem; margin-top: 12px; line-height: 1.7;">Upload your resume in under 10 seconds. Supports PDF and DOCX formats. No sign-up required.</p>
+        <div class="hero-actions" style="margin-top: 28px;">
+          <a class="btn btn-primary" href="/analyzer">Start Analyzing →</a>
+          <a class="btn btn-secondary" href="/report">View Sample Report</a>
+        </div>
+        <div style="margin-top: 32px; display: flex; gap: 20px; flex-wrap: wrap;">
+          <span style="font-size: 0.82rem; color: var(--text-muted);">✓ PDF &amp; DOCX support</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted);">✓ Groq LLM powered</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted);">✓ 15+ analysis fields</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

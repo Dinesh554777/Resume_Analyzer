@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter Generator | AI Resume Analyzer</title>
+  <meta name="description" content="Generate a personalized, ATS-optimized cover letter from your resume and job description using AI." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="cover-letter">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Dashboard</a>
+        <a href="/analyzer">Analyzer</a>
+        <a href="/jd-match">JD Match</a>
+        <a href="/report">Report</a>
+        <a href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a class="is-active" href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">AI Cover Letter Generator</span>
+        <h1>Generate Your Cover Letter</h1>
+      </div>
+    </div>
+
+    <form id="cl-form" enctype="multipart/form-data">
+      <div class="cl-layout">
+
+        <!-- Left: Inputs -->
+        <div class="cl-input-panel">
+          <div>
+            <span class="eyebrow">Step 1 — Resume</span>
+            <h2 style="margin-top: 8px;">Upload Resume</h2>
+          </div>
+
+          <label for="cl-resume-file" class="dropzone" id="cl-dropzone">
+            <input type="file" id="cl-resume-file" name="file" accept=".pdf,.docx,.doc" required />
+            <div class="dz-icon">📄</div>
+            <span class="dz-title">Drop resume here</span>
+            <span class="dz-meta">PDF or DOCX · Max 10 MB</span>
+          </label>
+
+          <div>
+            <span class="eyebrow">Step 2 — Job Details</span>
+            <h2 style="margin: 8px 0 16px;">Enter Job Information</h2>
+
+            <div style="display: grid; gap: 14px;">
+              <div>
+                <label class="field-label" for="cl-company">Company Name *</label>
+                <input
+                  type="text"
+                  id="cl-company"
+                  name="company_name"
+                  class="text-input"
+                  placeholder="e.g. Google, Microsoft, OpenAI"
+                  required
+                />
+              </div>
+              <div>
+                <label class="field-label" for="cl-title">Job Title *</label>
+                <input
+                  type="text"
+                  id="cl-title"
+                  name="job_title"
+                  class="text-input"
+                  placeholder="e.g. Machine Learning Engineer"
+                  required
+                />
+              </div>
+              <div>
+                <label class="field-label" for="cl-jd">Job Description *</label>
+                <textarea
+                  id="cl-jd"
+                  name="job_description"
+                  class="jd-textarea"
+                  placeholder="Paste the full job description here — requirements, responsibilities, skills…"
+                  style="min-height: 160px;"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <button id="cl-submit-btn" class="btn btn-primary btn-full" type="submit">
+            ✨ Generate Cover Letter
+          </button>
+        </div>
+
+        <!-- Right: Output -->
+        <div class="cl-output-panel" id="cl-output">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <div>
+              <span class="eyebrow">Generated Letter</span>
+              <h2 style="margin-top: 8px;">Your Cover Letter</h2>
+            </div>
+            <div id="cl-actions" class="cl-actions" style="display: none;">
+              <button id="cl-copy-btn" class="btn btn-secondary btn-sm" type="button">📋 Copy</button>
+              <button id="cl-download-btn" class="btn btn-ghost btn-sm" type="button">⬇ Download</button>
+            </div>
+          </div>
+
+          <!-- Placeholder -->
+          <div id="cl-placeholder" class="cl-placeholder">
+            <div class="cl-placeholder-icon">✉️</div>
+            <p>Fill in the form on the left and click <strong>Generate Cover Letter</strong>.</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px;">The AI will write a personalized, ATS-optimized letter tailored to your resume and the job description.</p>
+          </div>
+
+          <!-- Letter output -->
+          <div id="cl-letter-card" class="cl-letter-card" hidden></div>
+        </div>
+
+      </div>
+    </form>
+
+  </main>
+
+  <script>
+    // Show cl-actions when letter is rendered
+    const observer = new MutationObserver(() => {
+      const card    = document.getElementById("cl-letter-card");
+      const actions = document.getElementById("cl-actions");
+      if (card && !card.hidden && actions) actions.style.display = "flex";
+    });
+    const card = document.getElementById("cl-letter-card");
+    if (card) observer.observe(card, { attributes: true });
+  </script>
+  <script src="/static/script.js"></script>
+</body>
+</html>

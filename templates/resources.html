@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | AI Resume Analyzer</title>
+  <meta name="description" content="Resume improvement guides, checklists, and ATS optimization tips to boost your score before re-uploading." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="resources">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Dashboard</a>
+        <a href="/analyzer">Analyzer</a>
+        <a href="/jd-match">JD Match</a>
+        <a href="/report">Report</a>
+        <a href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a class="is-active" href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">Resume Playbook</span>
+        <h1>Improve Before Your Next Upload</h1>
+      </div>
+      <a class="btn btn-primary" href="/analyzer">Analyze Again</a>
+    </div>
+
+    <!-- Resource Cards -->
+    <div class="resource-grid">
+      <article class="resource-card">
+        <span class="resource-num">01</span>
+        <h3>Keyword Alignment</h3>
+        <p>Mirror the target role's language without stuffing repeated phrases. ATS systems scan for exact matches.</p>
+        <div class="checklist">
+          <label><input type="checkbox" id="kw1"> Add role-specific tools and frameworks</label>
+          <label><input type="checkbox" id="kw2"> Include domain-specific keywords</label>
+          <label><input type="checkbox" id="kw3"> Match seniority terminology</label>
+          <label><input type="checkbox" id="kw4"> Use both acronyms and full forms (e.g. ML / Machine Learning)</label>
+        </div>
+      </article>
+
+      <article class="resource-card">
+        <span class="resource-num">02</span>
+        <h3>Impact Bullets</h3>
+        <p>Start with an action verb, show scope, and finish with a measurable result. Quantified bullets score higher.</p>
+        <div class="formula-card">
+          <span>Action</span>
+          <span>Scope</span>
+          <span>Result</span>
+        </div>
+        <p style="margin-top: 14px; font-size: 0.83rem; color: var(--text-muted);">
+          Example: "Developed AI chatbot using FastAPI, reducing response time by 35%"
+        </p>
+      </article>
+
+      <article class="resource-card">
+        <span class="resource-num">03</span>
+        <h3>Project Proof</h3>
+        <p>Use projects to prove missing skills your work history doesn't cover. Include GitHub links and measurable impact.</p>
+        <div class="stack-meter">
+          <div class="meter-item">
+            <span class="meter-label">Build &amp; Deploy</span>
+            <div class="meter-track"><div class="meter-fill" style="width:0%" data-w="82%"></div></div>
+          </div>
+          <div class="meter-item">
+            <span class="meter-label">Document &amp; Share</span>
+            <div class="meter-track"><div class="meter-fill" style="width:0%" data-w="68%"></div></div>
+          </div>
+          <div class="meter-item">
+            <span class="meter-label">Measure Impact</span>
+            <div class="meter-track"><div class="meter-fill" style="width:0%" data-w="74%"></div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Two Panel Section -->
+    <div class="two-panel">
+      <div class="panel-card">
+        <span class="eyebrow">Pre-Export Checklist</span>
+        <h2>Before You Submit Your Resume</h2>
+        <ul class="checklist-ul" style="margin-top: 16px;">
+          <li>Keep resume focused — make the top third dense with role-relevant content</li>
+          <li>Prefer hard skills, tools, and project outcomes over generic claims</li>
+          <li>Use consistent date formats, job titles, and section names for ATS parsers</li>
+          <li>Save as a text-readable PDF — avoid image-only or scanned resume pages</li>
+          <li>Limit to 1–2 pages; recruiters spend ~7 seconds on the first scan</li>
+          <li>Include quantified achievements in every experience bullet point</li>
+        </ul>
+      </div>
+
+      <div class="panel-card">
+        <span class="eyebrow">Iteration Strategy</span>
+        <h2>Iterate with the Analyzer</h2>
+        <p>The fastest way to improve your ATS score is to make a targeted edit, re-upload, and compare your score against your previous result.</p>
+        <div style="margin-top: 20px; display: grid; gap: 12px;">
+          <div style="padding: 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); font-size: 0.88rem; color: var(--text-soft);">
+            <strong style="color: var(--text);">Step 1</strong> — Run initial analysis, note your ATS score.
+          </div>
+          <div style="padding: 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); font-size: 0.88rem; color: var(--text-soft);">
+            <strong style="color: var(--text);">Step 2</strong> — Apply one or two improvement suggestions.
+          </div>
+          <div style="padding: 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); font-size: 0.88rem; color: var(--text-soft);">
+            <strong style="color: var(--text);">Step 3</strong> — Re-upload and compare the new score.
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+          <a class="btn btn-secondary btn-sm" href="/report">Review Latest Report</a>
+          <a class="btn btn-primary btn-sm" href="/analyzer">Re-analyze →</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

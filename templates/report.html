@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report | AI Resume Analyzer</title>
+  <meta name="description" content="Full visual report of your AI resume analysis — ATS score, skill coverage, bar charts, and recommendations." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-page="report">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">RA</span>
+        <span>Resume Analyzer</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Dashboard</a>
+        <a href="/analyzer">Analyzer</a>
+        <a href="/jd-match">JD Match</a>
+        <a class="is-active" href="/report">Report</a>
+        <a href="/chat">AI Chat <span class="nav-badge">NEW</span></a>
+        <a href="/cover-letter">Cover Letter <span class="nav-badge">NEW</span></a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">Visual Report</span>
+        <h1>Resume Performance Report</h1>
+      </div>
+      <a class="btn btn-primary" href="/analyzer">Run New Analysis</a>
+    </div>
+
+    <!-- Empty State -->
+    <section id="report-empty" class="empty-state" hidden>
+      <div class="empty-icon">📋</div>
+      <h2>No Report Yet</h2>
+      <p>Analyze a resume first to unlock your full visual performance report with charts, scores, and recommendations.</p>
+      <a class="btn btn-primary" href="/analyzer" style="margin-top: 8px;">Go to Analyzer →</a>
+    </section>
+
+    <!-- Report Content -->
+    <section id="report-content" class="report-layout" hidden>
+
+      <!-- Hero: Big ring + readiness bars -->
+      <div class="report-hero">
+        <div class="report-score-panel">
+          <div id="big-ring" class="big-ring">
+            <div class="big-ring-inner">
+              <div id="big-score" class="big-score">0</div>
+              <div class="big-score-label">ATS Score</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="report-summary-panel">
+          <span class="eyebrow">Hiring Readiness</span>
+          <h2 id="report-verdict" class="report-verdict" style="margin-top: 10px;">Report Ready</h2>
+          <p id="report-summary-text" class="report-verdict-text">Review the visual breakdown below.</p>
+          <div id="readiness-bars" class="readiness-bars"></div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="chart-grid">
+        <article class="chart-card">
+          <h2>Profile Balance</h2>
+          <div id="profile-chart" class="bar-chart"></div>
+        </article>
+
+        <article class="chart-card">
+          <h2>Skill Coverage</h2>
+          <div class="donut-wrap">
+            <div id="skills-donut" class="donut">
+              <div id="skills-donut-inner" class="donut-inner">0%</div>
+            </div>
+            <div class="donut-meta">
+              <strong id="skills-ratio">0 / 0</strong>
+              <p>identified vs missing skills</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="results-grid">
+
+        <article class="result-card green">
+          <h3>Skills Identified</h3>
+          <ul id="report-skills-list" class="tag-list"></ul>
+        </article>
+
+        <article class="result-card amber">
+          <h3>Missing Skills</h3>
+          <ul id="report-missing-skills-list" class="tag-list"></ul>
+        </article>
+
+        <article class="result-card indigo wide">
+          <h3>Recommended Job Roles</h3>
+          <ul id="report-roles-list" class="tag-list"></ul>
+        </article>
+
+        <article class="result-card green">
+          <h3>Strengths</h3>
+          <div id="report-strengths-list"></div>
+        </article>
+
+        <article class="result-card amber">
+          <h3>Weaknesses</h3>
+          <div id="report-weaknesses-list"></div>
+        </article>
+
+        <article class="result-card wide">
+          <h3>Improvement Areas</h3>
+          <div id="report-improvements-list"></div>
+        </article>
+
+        <article class="result-card wide">
+          <h3>Interview Topics</h3>
+          <div id="report-interview-topics-list"></div>
+        </article>
+
+        <article class="result-card wide">
+          <h3>Project Suggestions</h3>
+          <div id="report-project-suggestions-list"></div>
+        </article>
+
+        <article class="result-card wide">
+          <h3>Resume Improvement Suggestions</h3>
+          <div id="report-improvement-suggestions-list"></div>
+        </article>
+
+        <article class="result-card wide">
+          <h3>Career Recommendations</h3>
+          <div id="report-career-recommendations-list"></div>
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
