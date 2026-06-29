@@ -8,4 +8,4 @@ python-docx
 python-multipart
 pdfplumber
 Jinja2==3.0.3
-
+Jinja2<3.1
