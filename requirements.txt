@@ -7,4 +7,5 @@ pydantic
 python-docx
 python-multipart
 pdfplumber
+Jinja2
 
